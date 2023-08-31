@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<passageiros>
+    <passageiro>
+        <nome>𝓙𝓸𝓪̃𝓸 𝓭𝓪 𝓢𝓲𝓵𝓿𝓪</nome>
+        <idade>35</idade>
+        <numero_ticket>12345</numero_ticket>
+        <origem>𝘾𝙖𝙢𝙥𝙞𝙣𝙖 𝙜𝙧𝙖𝙣𝙙𝙚 - 𝙋𝘽</origem>
+        <destino>𝙉𝙖𝙩𝙖𝙡 - 𝙍𝙉</destino>
+    </passageiro>
+    <passageiro>
+        <nome>𝓡𝓸𝓷𝓷𝓲𝓮 𝓒𝓸𝓵𝓮𝓶𝓪𝓷</nome>
+        <idade>28</idade>
+        <numero_ticket>67890</numero_ticket>
+        <origem>𝘽𝙧𝙖𝙨𝙞́𝙡𝙞𝙖 - 𝘿𝙁</origem>
+        <destino>𝘽𝙚𝙡𝙚́𝙢 - 𝙋𝘼</destino>
+    </passageiro>
+    <passageiro>
+        <nome>𝓜𝓲𝓬𝓱𝓪𝓮𝓵 𝓢𝓬𝓸𝓽𝓽</nome>
+        <idade>45</idade>
+        <numero_ticket>54321</numero_ticket>
+        <origem>𝙎𝙖̃𝙤 𝙋𝙖𝙪𝙡𝙤 - 𝙎𝙋</origem>
+        <destino>𝘾𝙪𝙧𝙞𝙩𝙞𝙗𝙖 - 𝙋𝙍</destino>
+    </passageiro>
+    <passageiro>
+        <nome>𝓙𝓮𝓯𝓮𝓻𝓼𝓸𝓷 𝓢𝓪𝓷𝓽𝓸𝓼</nome>
+        <idade>22</idade>
+        <numero_ticket>98765</numero_ticket>
+        <origem>𝙍𝙚𝙘𝙞𝙛𝙚 - 𝙋𝙀</origem>
+        <destino>𝙋𝙤𝙧𝙩𝙤 𝘼𝙡𝙚𝙜𝙧𝙚 - 𝙍𝙎</destino>
+    </passageiro>
+    <passageiro>
+        <nome>𝓡𝓪𝓯𝓪𝓮𝓵 𝓢𝓲𝓵𝓿𝓮𝓲𝓻𝓪</nome>
+        <idade>30</idade>
+        <numero_ticket>24680</numero_ticket>
+        <origem>𝙅𝙤𝙖̃𝙤 𝙋𝙚𝙨𝙨𝙤𝙖 - 𝙋𝘽</origem>
+        <destino>𝙊𝙪𝙧𝙤 𝙋𝙧𝙚𝙩𝙤 - 𝙈𝙂</destino>
+    </passageiro>
+</passageiros>
