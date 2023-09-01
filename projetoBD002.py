@@ -1,52 +1,51 @@
-import requests
-from bs4 import BeautifulSoup
+import psycopg2
 import csv
-import tkinter as tk
-from tkinter import ttk
 
+def inserir_dados_do_csv():
+    try:
+        conn = psycopg2.connect(
+            database="test",
+            user="postgres",
+            password="senhapgadmin",
+            host="127.0.0.1",
+            port="5432"
+        )
 
-url = 'https://www.camara.leg.br/transparencia/gastos-parlamentares?legislatura=56&ano=2022&mes=&por=uf&deputado=&uf=PB&partido='
+        # Crie um cursor
+        cur = conn.cursor()
 
-response = requests.get(url)
+        # Abra o arquivo CSV para leitura
+        with open('PYDB\dados_extraidos.csv', 'r') as arquivo_csv:
+            leitor_csv = csv.reader(arquivo_csv)
+            
+            # Pule o cabeçalho se houver um
+            next(leitor_csv, None)
 
-if response.status_code == 200:
-    
-    soup = BeautifulSoup(response.text, 'html.parser')
-    
-    tabela = soup.find()
-    
-    #! lista p/ armazenar dados
-    dados = []
-    
-    for linha in tabela.find_all("tr"):
-        colunas = linha.find_all("td")
-        if len(colunas) >= 5:  
-            dado1 = colunas[0].text.strip()
-            dado2 = colunas[1].text.strip()
-            dado3 = colunas[2].text.strip()
-            dado4 = colunas[3].text.strip()
-            dado5 = colunas[4].text.strip()
-            #! Adicionar mais colunas conforme necessário
+            
+            
+            # Itere sobre as linhas do arquivo CSV e insira os dados no banco de dados
+            for linha in leitor_csv:
+                
+                dado1 = linha[0].strip()
+                dado2 = linha[1].strip()
+                dado3 = linha[2].strip()
+                dado4 = linha[3].strip()
+                dado5 = linha[4].strip()
+                
+                
+                cur.execute("INSERT INTO deputado (nome, partido, uf, despesas, mes) VALUES (%s, %s, %s, %s, %s)", ([dado1, dado2, dado3, dado4, dado5]))
+                
+  
+        conn.commit()
+ #       inserir_dados_do_csv("PYDB\dados_extraidos.csv")
+        print("Dados inseridos com sucesso!")
 
-            dados.append([dado1, dado2, dado3, dado4, dado5])  #! Adicionar colunas conforme necessário
-
-    #? Armazenando os dados coletados
-    with open('dados_extraidos.csv', 'w', newline='') as arquivo_csv:
-        writer = csv.writer(arquivo_csv)
+    except (Exception, psycopg2.Error) as error:
+        print(f"Erro ao inserir dados: {error}")
         
-        #? Nome das colunas
-        writer.writerow(['Nome do deputado', 'Partido', 'UF', "Despesas", "Mês"])  
-        
-        #? Escreve  no arquivo
-        writer.writerows(dados)
-    
-    print("Dados extraídos e armazenados em 'dados_extraidos.csv'.")
-else:
-    print(f"Erro ao acessar a URL: {response.status_code}")
+    finally:
+        # Feche a conexão
+        if conn:
+            conn.close()
 
-
-def carregar_dados():
-    with open('dados_extraidos.csv', 'r') as arquivo_csv:
-        leitor = csv.reader(arquivo_csv)
-        dados = list(leitor)
-    return dados
+inserir_dados_do_csv()
