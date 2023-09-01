@@ -11,19 +11,19 @@ def inserir_dados_do_csv():
             port="5432"
         )
 
-        # Crie um cursor
+        
         cur = conn.cursor()
 
-        # Abra o arquivo CSV para leitura
+       
         with open('PYDB\dados_extraidos.csv', 'r') as arquivo_csv:
             leitor_csv = csv.reader(arquivo_csv)
             
-            # Pule o cabeçalho se houver um
+            
             next(leitor_csv, None)
 
             
             
-            # Itere sobre as linhas do arquivo CSV e insira os dados no banco de dados
+            
             for linha in leitor_csv:
                 
                 dado1 = linha[0].strip()
@@ -44,7 +44,7 @@ def inserir_dados_do_csv():
         print(f"Erro ao inserir dados: {error}")
         
     finally:
-        # Feche a conexão
+       
         if conn:
             conn.close()
 
